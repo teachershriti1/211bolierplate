@@ -174,14 +174,7 @@ setup_thread.start()
 def ftp():
     global IP_ADDRESS
 
-    authorizer = DummyAuthorizer()
-    authorizer.add_user("lftpd","lftpd",".",perm="elradfmw")
-
-    handler = FTPHandler
-    handler.authorizer = authorizer
-
-    ftp_server = FTPServer((IP_ADDRESS,21),handler)
-    ftp_server.serve_forever()
+    
 
 setup_thread = Thread(target=setup)           #receiving multiple messages
 setup_thread.start()
