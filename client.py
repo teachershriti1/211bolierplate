@@ -53,27 +53,7 @@ def sendMessage():
     text_message.delete(0, 'end')
 
 def browseFiles():
-    global textarea
-    global filePathLabel
-
-    try:
-        filename = filedialog.askopenfilename()
-        filePathLabel.configure(text=filename)
-        HOSTNAME = "127.0.0.1"
-        USERNAME = "lftpd"
-        PASSWORD = "lftpd"
-
-        ftp_server = FTP(HOSTNAME, USERNAME, PASSWORD)
-        ftp_server.encoding = "utf-8"
-        ftp_server.cwd('shared_files')
-        fname=ntpath.basename(filename)
-        with open(filename, 'rb') as file:
-            ftp_server.storbinary(f"STOR {fname}", file)
-
-        ftp_server.dir()
-        ftp_server.quit()
-    except FileNotFoundError:
-        print("Cancle Button Pressed")
+    pass
 
 def disconnectWithClient():
     global SERVER
